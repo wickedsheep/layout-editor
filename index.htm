@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Layout Editor</title>
+  <link type="text/css" href="lib/ext-3.4.1/resources/css/ext-all.css" rel="stylesheet" />
+  <link type="text/css" href="src/css/icons.css" rel="stylesheet" />
+  <script src="lib/ext-3.4.1/adapter/ext/ext-base.js"></script>
+  <script src="lib/ext-3.4.1/ext-all.js"></script>
+  <script src="src/js/layout/LayoutLayer.js"></script>
+  <script src="src/js/layout/LayoutList.js"></script>
+  <script src="src/js/layout/LayoutEditor.js"></script>
+</head>
+<body>
+  <script type="text/javascript">
+    // defaults
+    Ext.Panel.prototype.animCollapse = false;
+    Ext.layout.AccordionLayout.prototype.animate = false;
+    Ext.layout.BorderLayout.Region.prototype.floatable = false;
+    Ext.grid.GridPanel.prototype.trackMouseOver = false;
+    Ext.grid.GridPanel.prototype.stripeRows = true;
+    Ext.grid.GridPanel.prototype.columnLines = true;
+    Ext.grid.GridPanel.prototype.enableHdMenu = false;
+    Ext.grid.GridPanel.prototype.enableColumnHide = false;
+    Ext.grid.GridPanel.prototype.enableColumnMove = false;
+    Ext.grid.PropertyGrid.prototype.trackMouseOver = false;
+    Ext.grid.EditorGridPanel.prototype.trackMouseOver = false;
+    Ext.tree.TreePanel.prototype.animate = false;
+    Ext.tree.TreePanel.prototype.trackMouseOver = false;
+
+    Ext.onReady(function () {
+      Ext.QuickTips.init();
+
+      // pre-load some data
+      var state = localStorage.getItem('state');
+      if (state === null)
+        localStorage.setItem('state', '[{"name":"Complex","items":[{"flex":1,"split":"horizontal","items":[{"flex":1,"text":"top","split":"vertical","items":[{"flex":2,"text":"top, left","split":"vertical","items":[{"text":"Layer 10","flex":1,"_id":4},{"text":"Layer 11","flex":2,"_id":5}],"_id":3},{"flex":1,"text":"top, right - 2","_id":6}],"_id":2},{"flex":1,"text":"bottom","split":"vertical","items":[{"flex":1,"text":"bottom, left","_id":8},{"flex":1,"text":"bottom, right","split":"horizontal","items":[{"text":"Layer 8","flex":1,"_id":10},{"text":"Layer 9","flex":1,"_id":11,"split":"horizontal","items":[{"flex":1,"_id":12,"text":"aaa"},{"flex":2,"_id":13,"text":"Layer 13"}]}],"_id":9}],"_id":7}],"text":"Layer 1","_id":1}]},{"name":"Simple","items":[{"flex":1,"split":"horizontal","items":[{"_id":2,"flex":1,"text":"top"},{"_id":3,"flex":3,"text":"Layer 3","split":"vertical","items":[{"_id":4,"flex":1,"text":"Layer 4"},{"_id":5,"flex":1,"text":"Layer 5"}]}],"text":"Layer 1","_id":1}]},{"name":"Simple - Cube","items":[{"flex":1,"split":"vertical","items":[{"_id":2,"flex":1,"text":"Layer 2","split":"horizontal","items":[{"_id":4,"flex":1,"text":"tl"},{"_id":5,"flex":1,"text":"tr"}]},{"_id":3,"flex":1,"text":"Layer 3","split":"horizontal","items":[{"_id":6,"flex":1,"text":"bl"},{"_id":7,"flex":1,"text":"br"}]}],"text":"Layer 1","_id":1}]},{"name":"Dashboard","items":[{"flex":1,"_id":1,"text":"Layer 1","split":"horizontal","items":[{"_id":2,"flex":1,"text":"Layer 2"},{"_id":3,"flex":3,"text":"Layer 3","split":"vertical","items":[{"_id":4,"flex":1,"text":"Layer 4","split":"horizontal","items":[{"_id":9,"flex":1,"text":"Layer 9"},{"_id":10,"flex":1,"text":"Layer 10"},{"_id":20,"flex":1,"text":"Layer 20"}]},{"_id":6,"flex":1,"text":"Layer 6","split":"horizontal","items":[{"_id":11,"flex":1,"text":"Layer 11"},{"_id":12,"flex":1,"text":"Layer 12"},{"_id":19,"flex":1,"text":"Layer 19"}]},{"_id":7,"flex":1,"text":"Layer 7","split":"horizontal","items":[{"_id":13,"flex":1,"text":"Layer 13"},{"_id":14,"flex":1,"text":"Layer 14"},{"_id":18,"flex":1,"text":"Layer 18"}]},{"_id":8,"flex":1,"text":"Layer 8","split":"horizontal","items":[{"_id":15,"flex":1,"text":"Layer 15"},{"_id":16,"flex":1,"text":"Layer 16"},{"_id":17,"flex":1,"text":"Layer 17"}]}]},{"_id":21,"flex":1,"text":"Layer 21"}]}]}]');
+
+      var wnd = new Ix.layout.LayoutEditor({
+        width: 1000,
+        height: 600
+      });
+      wnd.show();
+    });
+  </script>
+</body>
+</html>
